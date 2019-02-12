@@ -12,6 +12,13 @@ echo "building universal apk path"
 echo "Getting app bundle from ${aab_path}"
 echo "Signing with ${keystore_url} key and alias ${keystore_alias}"
 
+echo "files in deploy directory"
+
+for filename in $(ls /bitrise/deploy/)
+do
+  echo $filename
+done;
+
 bundletool="${temp_path}/bundletool.jar"
 keystore="${temp_path}/keystore.jks"
 source="https://github.com/google/bundletool/releases/download/0.8.0/bundletool-all-0.8.0.jar"
