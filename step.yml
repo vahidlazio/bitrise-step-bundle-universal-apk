@@ -75,6 +75,17 @@ inputs:
         Format examples:
         - `/path/to/my/app.aab`
       is_required: true
+
+  - app_name: "app_name"
+    opts:
+      title: "App name"
+      summary: "`App name that can be used for the app name or apks name`"
+      description: |-
+        The output is something like:
+        Format examples:
+        - `app_name.apk`
+      is_required: true
+
   - keystore_url: $BITRISEIO_ANDROID_KEYSTORE_URL
     opts:
       title: "Keystore url"

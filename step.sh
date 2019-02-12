@@ -26,9 +26,9 @@ source="https://github.com/google/bundletool/releases/download/0.8.0/bundletool-
 
 # Building
 aab_output_path="${temp_path}/output/bundle"
-aab_output="${aab_output_path}/app.apks"
+aab_output="${aab_output_path}/${app_name}.apks"
 apk_output_path="${temp_path}/output/apk"
-apk_output="${apk_output_path}/universal.apk"
+apk_output="${apk_output_path}/${app_name}.apk"
 
 mkdir -p "${aab_output_path}" &
 mkdir -p "${apk_output_path}" &
@@ -46,6 +46,9 @@ exec java -jar "${bundletool}" build-apks --bundle="${aab_path}" --output="${aab
 wait
 echo "APK created in ${apk_output_path}"
 exec unzip ${aab_output} -d ${apk_output_path} &
+wait
+
+mv ${apk_output_path}/universal.apk ${apk_output} &
 wait
 
 envman add --key BITRISE_APK_PATH --value ${apk_output}
